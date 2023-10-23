@@ -1,8 +1,3 @@
----
-title: Manage Directory Sync using Admin Portal
-sidebar_label: Directory Sync
----
-
 # Manage Directories
 
 On the Admin Portal **Directory Sync** menu, you can see the Directory connections.
@@ -19,8 +14,6 @@ On the Admin Portal **Directory Sync** menu, you can see the Directory connectio
    - Enter the **Webhook URL**
    - Enter the **Webhook secret**
 
-![Create Directory](/img/dsync/admin/create-directory.png)
-
 ---
 
 ## Update Directory Sync connection
@@ -33,8 +26,6 @@ On the Admin Portal **Directory Sync** menu, you can see the Directory connectio
    - Enter the **Webhook secret**
    - Toggle **Enable Webhook events logging**
 
-![Update Directory](/img/dsync/admin/update-directory.png)
-
 ---
 
 ## View directory users
@@ -43,8 +34,6 @@ On the Admin Portal **Directory Sync** menu, you can see the Directory connectio
 2. From the list of directory sync connections, click database icon.
 3. Click the tab **Users**.
 4. Click the eye icon to view the user raw JSON data.
-
-![Users](/img/dsync/admin/users.png)
 
 ---
 
@@ -55,8 +44,6 @@ On the Admin Portal **Directory Sync** menu, you can see the Directory connectio
 3. Click the tab **Groups**.
 4. Click the eye icon to view the group raw JSON data.
 
-![Groups](/img/dsync/admin/groups.png)
-
 ---
 
 ## View webhook events
@@ -65,8 +52,6 @@ On the Admin Portal **Directory Sync** menu, you can see the Directory connectio
 2. From the list of directory sync connections, click database icon.
 3. Click the tab **Webhook Events**.
 4. Click the eye icon to view the event raw JSON data.
-
-![Logs](/img/dsync/admin/logs.png)
 
 Click the button **Clear Events** to delete all events from the database.
 
