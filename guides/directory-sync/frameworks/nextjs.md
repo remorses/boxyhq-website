@@ -1,8 +1,3 @@
----
-title: Implement Directory Sync (SCIM) to your Next.js App using Jackson
-sidebar_label: Next.js
----
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -18,48 +13,9 @@ Directory sync helps organizations automate the provisioning and de-provisioning
 
 Let’s start by installing SAML Jackson to your Next.js app.
 
-```bash
-npm i --save @boxyhq/saml-jackson
-```
-
 ### Initialize SAML Jackson
 
 Create a new file, `jackson.ts` that holds the Jackson initialization.
-
-```javascript title="lib/jackson.ts"
-import type { JacksonOption, IDirectorySyncController } from '@boxyhq/saml-jackson';
-import jackson from '@boxyhq/saml-jackson';
-
-let directorySyncController: IDirectorySyncController;
-
-const g = global as any;
-
-const opts = {
-  externalUrl: `http://localhost:3000/`,
-  samlPath: '/',
-  scimPath: '/api/scim',
-  db: {
-    engine: 'sql',
-    type: 'postgres',
-    url: "postgres://username:password@localhost:5432/your-database-name",
-  },
-} as JacksonOption;
-
-export default async function init() {
-  if (!g.directorySyncController) {
-    const ret = await jackson(opts);
-
-    directorySyncController = ret.directorySyncController;
-    g.directorySyncController = directorySyncController;
-  } else {
-    directorySyncController = g.directorySyncController;
-  }
-
-  return {
-    directorySyncController,
-  };
-}
-```
 
 ### Create the Directory
 
@@ -67,47 +23,13 @@ The first step towards the integration is creating a directory for a tenant.
 
 Directory Sync providers (Identity Providers) require you to provide a **SCIM Base URL** and **SCIM Auth token**. Both are unique for each directory your app users create.
 
-```javascript
-const { data, error } = await directorySyncController.directories.create({
-  name: 'any-name',
-  type: 'okta-scim-v2',
-  tenant: "tenant-identifier"
-  product: "product-identifier"
-});
-```
-
 The response will looks like as below:
-
-```javascript
-{
-  "data": {
-    "id": "58b5cd9dfaa39d47eb8f5f88631f9a629a232016",
-    "name": "any-name",
-    "tenant": "tenant-identifier",
-    "product": "product-identifier",
-    "type": "okta-scim-v2",
-    "log_webhook_events": false,
-    "scim": {
-      "path": "/api/scim/58b5cd9dfaa39d47eb8f5f88631f9a629a232016",
-      "secret": "IJzAoevjD_liiiy-VkDtXg",
-      "endpoint": "http://localhost:5225/api/scim/58b5cd9dfaa39d47eb8f5f88631f9a629a232016"
-    },
-    "webhook": {
-      "endpoint": "",
-      "secret": ""
-    }
-  },
-  "error": null
-}
-```
 
 Note the keys `scim.endpoint` and `scim.secret` from the above JSON. Your users need these values while configuring SCIM app on their Identity Provider.
 
 Typically you'll have to provide some UI where the users can create the directory for their providers and display `SCIM Base URL` and `SCIM Auth Token` for the directory the user created. Usually, this UI comes under organization settings or team settings.
 
 For example, see the demo below.
-
-![create-directory](/videos/create-directory.gif)
 
 You can retrieve the supported list of Directory Sync providers by calling the method `directorySyncController.providers()`.
 
@@ -119,73 +41,25 @@ Here are the calls your API should be able to receive from IdP SCIM provisioning
 
 #### Users Provisioning
 
-| Route      | Methods    |
-| ---------- | ---------- |
-| /Users     | POST       |
-| /Users/:id | GET        |
+| Route | Methods |
+| --- | --- |
+| /Users | POST |
+| /Users/:id | GET |
 | /Users/:id | PUT, PATCH |
-| /Users/:id | DELETE     |
+| /Users/:id | DELETE |
 
 #### Push Groups and Group Memberships
 
-| Route       | Methods    |
-| ----------- | ---------- |
-| /Groups     | POST       |
-| /Groups/:id | GET        |
+| Route | Methods |
+| --- | --- |
+| /Groups | POST |
+| /Groups/:id | GET |
 | /Groups/:id | PUT, PATCH |
-| /Groups/:id | DELETE     |
+| /Groups/:id | DELETE |
 
 ### Handle SCIM API Requests
 
 Now let's add the route to handle the incoming requests from the Directory Sync providers.
-
-```javascript title="pages/api/scim/[...directory].ts"
-import type { NextApiRequest, NextApiResponse } from 'next';
-import type { DirectorySyncRequest, HTTPMethod, DirectorySyncEvent } from '@boxyhq/saml-jackson';
-
-import jackson from '../../../lib/jackson';
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const { directorySyncController } = await jackson();
-
-  const { method, query, body } = req;
-
-  const directory = query.directory as string[];
-  const [directoryId, path, resourceId] = directory; // Extract the params
-
-  // Construct the event
-  const request: DirectorySyncRequest = {
-    method: method as HTTPMethod,
-    body: body ? JSON.parse(body) : undefined,
-    directoryId: directoryId,
-    resourceId: resourceId,
-    resourceType: path === 'Users' ? 'users' : 'groups',
-    apiSecret: extractAuthToken(req),
-    query: {
-      count: req.query.count ? parseInt(req.query.count as string) : undefined,
-      startIndex: req.query.startIndex ? parseInt(req.query.startIndex as string) : undefined,
-      filter: req.query.filter as string,
-    },
-  };
-
-  // Handle the requests
-  // highlight-start
-  const { status, data } = await directorySyncController.requests.handle(request, async (event: DirectorySyncEvent) => {
-    console.log(event); // Do something with the event
-  });
-  // highlight-end
-
-  // Send the response back
-  return res.status(status).json(data);
-}
-
-// Fetch the auth token from the request headers
-const extractAuthToken = (req: NextApiRequest): string | null => {
-  const authHeader = req.headers.authorization || null;
-
-  return authHeader ? authHeader.split(' ')[1] : null;
-};
-```
 
 `pages/api/scim/[...directory].ts` is a catch all paths route. Matched parameters will be sent as a query parameter to the page, and it will always be an array.
 
