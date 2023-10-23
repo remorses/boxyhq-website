@@ -1,9 +1,3 @@
----
-title: Add SAML SSO to Django App with BoxyHQ
-description: Add SAML SSO to Django App with BoxyHQ
-sidebar_label: Django
----
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -29,4 +23,4 @@ This step allows your tenants to configure SAML connections for their users. Rea
 
 Once you add a SAML connection, the app can use this SAML connection to initiate the SSO authentication flow using SAML Jackson. The following sections focuses more on the SSO authentication side.
 
-[WIP - Coming Soon]
+\[WIP - Coming Soon\]
