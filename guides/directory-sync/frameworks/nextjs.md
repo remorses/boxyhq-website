@@ -45,7 +45,7 @@ Here are the calls your API should be able to receive from IdP SCIM provisioning
 | --- | --- |
 | /Users | POST |
 | another one |  |
-| /Users/:id | GET |
+| some very big stuff | GET |
 | /Users/:id | PUT, PATCH |
 | /Users/:id | DELETE |
 
