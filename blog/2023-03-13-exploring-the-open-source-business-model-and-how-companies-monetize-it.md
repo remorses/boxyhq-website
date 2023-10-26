@@ -1,14 +1,3 @@
----
-slug: exploring-the-open-source-business-model-and-how-companies-monetize-it
-title: Exploring the open-source business model and how companies monetize it
-author: Deepak Prabhakara
-author_title: Co-founder & CEO @BoxyHQ
-author_url: https://github.com/deepakprabhakara
-author_image_url: https://boxyhq.com/img/team/deepak.jpg
-tags_disabled: [open-source]
-image: /img/blog/christine-roy-ir5MHI6rPg0-unsplash.jpg
----
-
 With the rise of open-source solutions and solution providers, one of the biggest questions asked is, how do businesses monetize while giving away the source code for free?
 
 ## What is an open-source company?
@@ -31,18 +20,14 @@ Paid Support or Premium Care, as it’s commonly termed, is a very common busine
 
 The benefits of this model are, as Red Hat has demonstrated, you can build a revenue-generating company that can be scaled effectively. The drawback is, some companies only make the open-source code available with a paid plan, which goes against the open-source ethos. To truly use this model effectively, companies should offer the source code for free regardless of an option for additional support.
 
-![OSS Monetization](/img/blog/christine-roy-ir5MHI6rPg0-unsplash.jpg)
-
-<div style={{fontSize: "10px", marginTop: "-20px", paddingBottom: "20px"}}>Photo by <a href="https://unsplash.com/fr/@agent_illustrateur?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Christine Roy</a> on <a href="https://unsplash.com/images/things/money?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></div>
-
 ### Licensing
 
 Open-source companies can also license their open-source software, which applies rules to how their software can be used, edited, distributed and copied. Some open-source companies will allow individuals and smaller organizations to use their software for free while charging larger companies a fee to deploy it. Normally a license fee comes with additional benefits, such as support and training, etc. There are also two main types of licensing that open-source companies can utilize.
 
--Copyleft license
+\-Copyleft license
 This is a type of license in which, if code is copied and modified it still retains the original license terms
 
--Permissive license
+\-Permissive license
 This grants licenses based on different needs and is much more diverse.
 
 Licensing and open-source licensing is a huge topic in itself and Snyk has done a fantastic job at explaining this. You can read more about it here.
