@@ -1,14 +1,3 @@
----
-slug: sso-building-blocks
-title: SSO Building blocks - SAML, OAuth 2.0 and OpenID Connect
-author: Aswin V
-author_title: Senior Developer @BoxyHQ
-author_url: https://twitter.com/av__2021
-author_image_url: https://boxyhq.com/img/team/aswin.jpg
-tags_disabled: [sso, engineering, saml-jackson, oauth-2.0]
-image: /img/sso-flow.png
----
-
 We have already covered SAML at a high level from both [user](2022-06-30-understanding-saml-sso-the-basics-from-the-user-side.md) and [application provider](2022-06-30-understanding-saml-sso-the-basics-from-the-solution-providers-side.md) points of view.
 
 In this post, we'll dive into the technicalities of SAML, OAuth 2.0 and OpenID Connect and how these come together to serve as building blocks for Jackson SSO.
@@ -30,10 +19,10 @@ The flow starts with the app redirecting the user agent to an intermediary Autho
 The above-mentioned flow offers a few benefits:
 
 - The user only authenticates with the authorization server and the credentials are never shared with the app.
-- The access token is not transmitted<sup>\*</sup> via the user agent but directly to the client via an HTTP request.
+- The access token is not transmitted\* via the user agent but directly to the client via an HTTP request.
 - The Client can be authenticated by the authorization server by using a client secret.
 
-**\*** _It's worth mentioning the fact that another grant type 'implicit grant' does return an access token via the user agent in the redirect URL fragment_
+**\*** *It's worth mentioning the fact that another grant type 'implicit grant' does return an access token via the user agent in the redirect URL fragment*
 
 #### Using OAuth 2.0 for authentication
 
@@ -55,8 +44,6 @@ OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0 protocol. 
 ## Assembling the SSO puzzle
 
 Now that we have all the pieces of the SSO puzzle, bringing it together in Jackson would look something like the one below.
-
-![SSO Flow](/img/sso-flow.png)
 
 Allow me to explain.
 
