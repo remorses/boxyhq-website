@@ -1,15 +1,3 @@
----
-slug: three-reasons-not-to-build-enterprise-features
-title: 'Be enterprise-ready: Three reasons not to build enterprise features!'
-author: Sama - Carlos Samame
-author_title: Co-founder & COO @BoxyHQ
-author_url: https://www.linkedin.com/in/samame/
-author_image_url: https://boxyhq.com/img/team/sama.jpg
-tags_disabled:
-  [enterprise-readiness, startups, enterprises, corporates, sales, founder]
-image: /img/blog/dontbuild/security-risks-meme.jpeg
----
-
 If you are thinking about building features to be enterprise-ready, there are typically two paths that brought you here:
 
 1. Your team has initially focused on smaller customers and is now looking to expand, or
@@ -21,8 +9,6 @@ Enterprises can be scared to give startups a chance and startups often lose out 
 
 - List of other enterprise customers (“show me more logos, we are not a guinea pig”)
 - Compliance requirements (“a checklist to show my boss you are safe”)
-
-![Security risks everywhere](/img/blog/dontbuild/security-risks-meme.jpeg)
 
 But what is enterprise readiness? From a product perspective, [EnterpriseReady.io](https://www.enterpriseready.io) identified common features that set enterprise software apart. You can do a free self-assessment [here](https://www.enterprisegrade.io/). The basics mean that your business meets the standards that enterprises look for in solution providers.
 
@@ -42,4 +28,4 @@ Remember that not all enterprises are the same. But working with a few design pa
 
 Deals, deals, deals!
 
-If you know anyone that needs to build enterprise features we would love to hear from them and see how could we help, please feel free to share my email: sama@boxyhq.com - Thank you!
+If you know anyone that needs to build enterprise features we would love to hear from them and see how could we help, please feel free to share my email: [sama@boxyhq.com](mailto:sama@boxyhq.com) - Thank you!
