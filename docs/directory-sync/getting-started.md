@@ -1,8 +1,3 @@
----
-title: Getting Started
-sidebar_label: Getting Started
----
-
 There are two ways to integrate the Directory Sync within your application.
 
 ## As a service
@@ -21,9 +16,5 @@ This is available if you are already developing your application using Node.js.
 
 The advantage of embedding Jackson as an NPM library is that you do not have to manage operations of a separate service.
 The disadvantage is that you do not readily get our UI tooling (like the Admin Portal) with this method.
-
-```bash
-npm i --save @boxyhq/saml-jackson
-```
 
 See the [API Reference](/docs/directory-sync/api-reference) to understand more about the available methods.
